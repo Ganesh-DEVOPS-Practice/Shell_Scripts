@@ -12,7 +12,7 @@ fi
 
 for package in $@
 do 
-    dnf installed $package 
+    dnf list installed $package 
     if [ $? -ne 0 ]; then
         echo "Package $package is not installed. Installing..."
         dnf install $package -y
