@@ -59,7 +59,7 @@ unzip /tmp/backend.zip &>> $Log_file
 Validate $? "Unzipping backend.zip" "unzip"
 
 npm install &>> $Log_file
-cp /home/ec2-user/Shell_Script-Practice/backend.service /etc/systemd/system/backend.service &>> $Log_file
+cp $(pwd)/backend.service /etc/systemd/system/backend.service &>> $Log_file
 Validate $? "Copying backend.service" "copy"
 
 dnf install mysql -y &>> $Log_file

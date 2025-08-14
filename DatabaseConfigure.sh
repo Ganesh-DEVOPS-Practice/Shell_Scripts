@@ -41,6 +41,7 @@ systemctl status mysqld &>> $Log_file
 Validate $? "MySQL service" "status checking"
 echo -e "$G Enabling MySQL service to start on boot... $N" | tee -a $Log_file
 systemctl enable mysqld &>> $Log_file
+validate $? "MySQL service" "enabling"
 mysql -h mysql.ganeshdevops.space -u root -pExpenseApp@1 -e 'show databases;' &>> $Log_file
 if [ $? -ne 0 ]; then
     echo -e "$Y Mysql server root password not setup, setting it ... $N" | tee -a $Log_file
