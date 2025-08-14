@@ -1,5 +1,5 @@
 #!/bin/bash
-Log_folder="/var/log/expense_projec"
+Log_folder="/var/log/expense_project"
 File_name=$(echo $0 | cut -d "." -f1)
 Time_stamp=$(date +%Y-%m-%d_%H:%M:%S)
 Log_file="$Log_folder/$File_name-$Time_stamp.log"
@@ -41,7 +41,7 @@ systemctl status mysqld &>> $Log_file
 Validate $? "MySQL service" "status checking"
 echo -e "$G Enabling MySQL service to start on boot... $N" | tee -a $Log_file
 systemctl enable mysqld &>> $Log_file
-mysql -h 12.78.990.42 -u root -pExpenseApp@1 -e 'show databases;' &>> $Log_file
+mysql -h 172.31.40.221 -u root -pExpenseApp@1 -e 'show databases;' &>> $Log_file
 if [ $? -ne 0 ]; then
     echo -e "$Y Mysql server root password not setup, setting it ... $N" | tee -a $Log_file
     mysql_secure_installation --set-root-pass ExpenseApp@1
