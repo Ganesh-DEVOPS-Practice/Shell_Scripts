@@ -27,7 +27,7 @@ Validate(){
     fi
 }
 
-echo -e "$G Starting the database configuration... $N" | tee -a $Log_file
+echo -e "$G Starting the Database configuration... $N" | tee -a $Log_file
 Check_User
 echo -e "$G Installing MySQL server... $N" | tee -a $Log_file
 # Install MySQL server
@@ -41,7 +41,7 @@ systemctl status mysqld &>> $Log_file
 Validate $? "MySQL service" "status checking"
 echo -e "$G Enabling MySQL service to start on boot... $N" | tee -a $Log_file
 systemctl enable mysqld &>> $Log_file
-mysql -h 172.31.40.221 -u root -pExpenseApp@1 -e 'show databases;' &>> $Log_file
+mysql -h mysql.ganeshdevops.space -u root -pExpenseApp@1 -e 'show databases;' &>> $Log_file
 if [ $? -ne 0 ]; then
     echo -e "$Y Mysql server root password not setup, setting it ... $N" | tee -a $Log_file
     mysql_secure_installation --set-root-pass ExpenseApp@1
@@ -49,3 +49,7 @@ if [ $? -ne 0 ]; then
 else
     echo -e "$G MySQL server root password already set $N" | tee -a $Log_file
 fi
+
+
+echo -e "$G Mysql Server configuration completed successfully! $N" | tee -a $Log_file
+echo -e "$G Log file: $Log_file $N" | tee -a $Log_file
