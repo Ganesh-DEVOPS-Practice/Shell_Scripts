@@ -51,7 +51,7 @@ mkdir -p /app
 Validate $? "Directory '/app'" "creation"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-validate $? "Download of backend.zip" "download"
+validate $? "backend.zip" "download"
 
 cd /app
 rm -rf /app/*
