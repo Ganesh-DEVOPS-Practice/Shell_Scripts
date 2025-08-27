@@ -3,7 +3,7 @@ Description = Backend Service
 
 [Service]
 User=expense
-Environment=DB_HOST="mysql.ganeshdevops.space"
+Environment=DB_HOST="database.ganeshdevops.space"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend
 
