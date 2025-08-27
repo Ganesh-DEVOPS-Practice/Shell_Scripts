@@ -50,7 +50,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>> $Log_file
 Validate $? "Unzipping frontend.zip" "unzip"
 
-cp /home/ec2-user/Shell_Script-Practice/expense.conf /etc/nginx/default.d/expense.conf  &>> $Log_file
+cp /root/Shell_Scripts/expense.conf /etc/nginx/default.d/expense.conf  &>> $Log_file
 Validate $? "Nginx configuration" "copying"
 
 echo -e "$G Restarting nginx service... $N" | tee -a $Log_file
