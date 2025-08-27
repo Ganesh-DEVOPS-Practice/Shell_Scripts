@@ -65,7 +65,7 @@ Validate $? "Copying backend.service" "copy"
 
 dnf install mysql -y &>> $Log_file
 Validate $? "MySQL client" "installation"
-mysql -h mysql.ganeshdevops.space -u root -pExpenseApp@1 < /app/schema/backend.sql &>> $Log_file
+mysql -h database.ganeshdevops.space -u root -pExpenseApp@1 < /app/schema/backend.sql &>> $Log_file
 Validate $? "MySQL schema" "import"
 
 systemctl daemon-reload &>> $Log_file
