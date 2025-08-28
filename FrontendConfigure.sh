@@ -10,6 +10,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+Current_Script_Dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 User_ID=$(id -u)
 Check_User(){
     if [ $User_ID -ne 0 ]; then
@@ -50,7 +52,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>> $Log_file
 Validate $? "Unzipping frontend.zip" "unzip"
 
-cp /root/Shell_Scripts/expense.conf /etc/nginx/default.d/expense.conf  &>> $Log_file
+cp "$Current_Script_Dir/expense.conf" /etc/nginx/default.d/expense.conf  &>> $Log_file
 Validate $? "Nginx configuration" "copying"
 
 echo -e "$G Restarting nginx service... $N" | tee -a $Log_file
