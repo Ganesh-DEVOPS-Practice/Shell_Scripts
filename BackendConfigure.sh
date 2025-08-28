@@ -10,6 +10,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+Current_Script_Dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 User_ID=$(id -u)
 Check_User(){
     if [ $User_ID -ne 0 ]; then
@@ -60,7 +62,7 @@ Validate $? "Unzipping backend.zip" "unzip"
 
 npm install &>> $Log_file
 
-cp /root/Shell_Scripts/backend.service /etc/systemd/system/backend.service &>> $Log_file
+cp "$Current_Script_Dir/backend.service" /etc/systemd/system/backend.service &>> $Log_file
 Validate $? "Copying backend.service" "copy"
 
 dnf install mysql -y &>> $Log_file
